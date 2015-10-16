@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="FloatingView-1.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.recruit-lifestyle/FloatingView/1.3/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.recruit-lifestyle/FloatingView/1.3/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.recruit-lifestyle/FloatingView/1.3/57f7020f3d5b1ce86e786d2d0ed1659cc285ac72/FloatingView-1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
