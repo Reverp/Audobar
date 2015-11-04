@@ -43,16 +43,19 @@ public class HeadphoneService extends Service {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         RelativeLayout mRootLayout = (RelativeLayout) LayoutInflater.from(this).
                 inflate(R.layout.audio_bar, null);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+        float screenDensity = metrics.density;
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-              250,250,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                Math.round(100 * screenDensity),
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 PixelFormat.TRANSLUCENT);
 
-        params.gravity = Gravity.TOP | Gravity.LEFT;
+        params.gravity = Gravity.BOTTOM | Gravity.FILL_HORIZONTAL;
         params.x = 0;
-        params.y = 500;
 
         windowManager.addView(mRootLayout, params);
     }
