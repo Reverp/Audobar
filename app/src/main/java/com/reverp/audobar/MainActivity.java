@@ -1,24 +1,34 @@
 package com.reverp.audobar;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
+    private HeadphoneBroadcastReceiver headphoneBroadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
         //String ok = "";
         final Context context = this.getApplicationContext();
-        startService(new Intent(context, HeadphoneService.class));
-        finish();
+        headphoneBroadcastReceiver = new HeadphoneBroadcastReceiver();
+        registerReceiver(headphoneBroadcastReceiver, filter);
+        //startService(new Intent(context, AudobarService.class));
+
+        //finish();
+    }
+
+    @Override
+    protected void onResume() {
+
+
+        super.onResume();
     }
 
     @Override

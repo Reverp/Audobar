@@ -13,13 +13,19 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <service
-            android:name=".HeadphoneService"
+            android:name=".AudobarService"
             android:exported="false"/>
+        <receiver android:name=".HeadphoneBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.headset_plug" />
+            </intent-filter>
+        </receiver>
     </application>
 
 

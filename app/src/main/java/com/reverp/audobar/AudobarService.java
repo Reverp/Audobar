@@ -10,6 +10,7 @@ import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -26,12 +27,11 @@ import jp.co.recruit_lifestyle.android.floatingview.FloatingViewManager;
 /**
  * Created by Michael on 10/16/2015.
  */
-public class HeadphoneService extends Service {
+public class AudobarService extends Service {
 
     private FloatingViewManager mFloatingViewManager;
 
     private WindowManager windowManager;
-    private ImageView chatHead;
 
     @Override public IBinder onBind(Intent intent) {
         // Not used
@@ -41,8 +41,8 @@ public class HeadphoneService extends Service {
     @Override public void onCreate() {
         super.onCreate();
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        RelativeLayout mRootLayout = (RelativeLayout) LayoutInflater.from(this).
-                inflate(R.layout.audio_bar, null);
+        RelativeLayout mRootLayout = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.audio_bar, null);
+
         DisplayMetrics metrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(metrics);
         float screenDensity = metrics.density;
@@ -58,11 +58,15 @@ public class HeadphoneService extends Service {
         params.x = 0;
 
         windowManager.addView(mRootLayout, params);
+
+
+        headphoneBroadcastReceiver = new HeadphoneBroadcastReceiver();
+        registerReceiver(headphoneBroadcastReceiver, filter);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (chatHead != null) windowManager.removeView(chatHead);
+        //if (chatHead != null) windowManager.removeView(chatHead);
     }
 }
